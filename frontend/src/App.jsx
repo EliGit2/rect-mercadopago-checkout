@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
+import { FaWhatsapp } from 'react-icons/fa'; // ← NUEVA IMPORTACIÓN
 import './App.css';
 
 // ⚠️ Coloca tu Public Key real aquí
@@ -33,31 +34,45 @@ function App() {
   const products = [
     {
       id: 1,
-      title: 'Camiseta Deportiva Premium',
-      description: 'Camiseta 100% algodón orgánico. Talles: S, M, L, XL.',
-      price: 3500,
-      image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=300&fit=crop'
+      title: 'Pc Gamer Core i7 8Gen',
+      description: 'Core i7 8Gen, 32Gb Ram, Windows 11 Pro,Sistema operativo de 64 bits, procesador basado en x64, Almacenamiento 385 GB de 2,04 TB usado, Tarjeta grafica NVIDIA GeForce GTX 1050 Ti (4 GB), Ram 32,0 GB (31,9 GB usable), procesador Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz (3.19 GHz), Camara USB logitech, Parlantes Genius USB 2.0 6W, tarjeta Madre ASROCK H310M-HDV P3.00 ',
+      price: 900,
+      image: 'images/publicidad.png?w=400&h=300&fit=crop'
     },
     {
       id: 2,
-      title: 'Short Deportivo',
-      description: 'Short cómodo para running y entrenamiento.',
-      price: 2800,
-      image: 'https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=400&h=300&fit=crop'
+      title: 'Lectora Externa Nvme Md202',
+      description: 'Bahia Externa Nvme Md202  Marca: Hiksemi',
+      price: 25,
+      image: 'images/LECTORAM2HIKSEMI.png?w=400&h=300&fit=crop'
     },
     {
       id: 3,
-      title: 'Zapatillas Running',
-      description: 'Zapatillas con amortiguación. Talles 36-44.',
-      price: 12500,
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop'
+      title: 'Combo',
+      description: 'MARVO CM310SP â€“ Combo Gaming 3 en 1 (Mousepad + Mouse + Teclado EspaÃ±ol) gaming con mousepad de tela de alta densidad resistente al agua, base de goma antideslizante y borde cosido (280 x 230 x 2 mm), mouse ergonÃ³mico ambidiestro hasta 3200 DPI (800-1200-2400-3200), 7 botones programables, RGB 7 colores, 1000 Hz, 10G, cable 1,6 m, y teclado espaÃ±ol de 87 teclas de doble disparo, membrana, retroiluminaciÃ³n arcoÃ­ris 3 colores, anti-ghosting 25 teclas, USB 2.0, cable 1,6 m; color negro/rojo.',
+      price: 75,
+      image: 'images/Combogaming.jpg?w=400&h=300&fit=crop'
     },
     {
       id: 4,
-      title: 'Gorra Deportiva',
-      description: 'Gorra unisex con protección UV.',
-      price: 1800,
-      image: 'https://images.unsplash.com/photo-1588850571411-7f41d2e9c6d6?w=400&h=300&fit=crop'
+      title: 'Pc Core i7 3Gen 12Gb Ram',
+      description: 'Discos SSD 500GB, Tarjeta de video Geforce 4Gb',
+      price: 680,
+      image: 'images/PCi73gen.png?w=400&h=300&fit=crop'
+    },
+    {
+      id: 5,
+      title: 'Parlantes Genius ',
+      description: '2.0 Sp-HF180 6W usb, Tres colores disponibles (Madera oscuro, claro y negro)',
+      price: 600,
+      image: 'images/img2.png?w=400&h=300&fit=crop'
+    },
+    {
+      id:6,
+      title: 'Equipo Gamer Ryzen 5 3400Ghz',
+      description: 'Gabinete Deepcool CC560 V2 (GAB156) Fuente Deepcool 450W 80 Plus (FUE134) Procesador AMD Ryzen 5 3400G Box 3.7Ghz AM4 (PRO262) Mother Biostar A520MHP (MOT148) 2 Memoria Lexar DDR4 8GB 3200Mhz (MEM437x2) Disco SSD Biostar 512GB (DIS430) Radeon RX Vega 11 Graphics',
+      price: 700,
+      image: 'images/pcGamer1.jpg?w=400&h=300&fit=crop'
     }
   ];
 
@@ -109,12 +124,16 @@ function App() {
     setLoading(false);
   };
 
+  // NÚMERO DE WHATSAPP (configura aquí tu número)
+  const phoneNumber = "59899949387"; // ← CAMBIA ESTE NÚMERO
+  const whatsappMessage = "Hola! Me interesa un producto de su tienda Multiventas Elias";
+
   return (
     <div className="app">
       <div className="container">
         <header className="header">
-          <h1>🛍️ Mi Tienda Online</h1>
-          <p>Paga con Mercado Pago - Moneda UYU</p>
+          <h1>🛍️ Mi Tienda Online Multiventas Elias</h1>
+          <p>Paga con Mercado Pago - Moneda USD</p>
         </header>
 
         {/* Mensaje de éxito/error después del pago */}
@@ -132,7 +151,7 @@ function App() {
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-description">{product.description}</p>
                 <div className="product-price">
-                  ${product.price.toLocaleString('es-UY')} <span className="price-currency">UYU</span>
+                  ${product.price.toLocaleString('en-US')} <span className="price-currency">USD</span>
                 </div>
                 <button className="buy-button" onClick={() => handleBuy(product)}>
                   Comprar ahora
@@ -204,8 +223,31 @@ function App() {
               )}
             </div>
           </div>
+          
         </div>
+        
       )}
+
+      {/* ==== BOTÓN DE CONTACTOS EXISTENTE (lo dejamos igual) ==== */}
+      <button className="button">
+        <h1>🛍️ Contactos</h1>
+        <p>Telf. : 099 94 93 87</p>
+        <p>Email: ventajudaicavnzla@gmail.com</p>
+      </button>
+      <p>Contactos</p>
+      <p>+598 099 94 93 87</p>
+
+      {/* ===== NUEVO BOTÓN FLOTANTE DE WHATSAPP ===== */}
+      <a
+        href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-float"
+        aria-label="Contactar por WhatsApp"
+      >
+        <FaWhatsapp className="whatsapp-icon" />
+        <span className="whatsapp-tooltip">¡Chatea con nosotros!</span>
+      </a>
     </div>
   );
 }

@@ -38,6 +38,22 @@ body {
   opacity: 0.95;
 }
 
+.button {
+  text-align: center;
+  color: white;
+  margin-bottom: 48px;
+}
+.button h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.button p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -335,5 +351,109 @@ body {
   .modal-buttons {
     flex-direction: column;
     gap: 8px;
+  }
+}
+
+
+/* ============================================
+   BOTÓN WHATSAPP FLOTANTE
+   ============================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  text-decoration: none;
+  border: 3px solid white;
+  animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+  background: linear-gradient(135deg, #128C7E, #075E54);
+}
+
+.whatsapp-float svg {
+  width: 40px;
+  height: 40px;
+  animation: bounce-icon 2s infinite;
+}
+
+/* Tooltip que aparece al pasar el mouse */
+.whatsapp-tooltip {
+  position: absolute;
+  right: 80px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  right: 90px;
+}
+
+/* Animaciones */
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes bounce-icon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* ============================================
+   RESPONSIVE PARA MÓVILES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .whatsapp-tooltip {
+    display: none;
   }
 }
