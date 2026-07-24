@@ -3,8 +3,8 @@ import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { FaWhatsapp } from 'react-icons/fa'; // ← NUEVA IMPORTACIÓN
 import './App.css';
 
-// ⚠️ Coloca tu Public Key real aquí
-initMercadoPago('APP_USR-TU_PUBLIC_KEY_REAL_AQUI');
+// ⚠️ Coloca tu Public Key real aquí 
+initMercadoPago('APP_USR-9fa877e1-b075-4dca-ad4f-785f6131aa17');
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);

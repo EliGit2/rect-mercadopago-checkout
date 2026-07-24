@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const client = new MercadoPagoConfig({
-  accessToken: 'APP_USR-2593299031971027-111814-703a4bd24c88369ef032667592290713-1104219206'
+  accessToken: 'APP_USR-6915537395252772-072400-341a0f36f88b902e1bb2846d487a3af9-1104219206'
 });
 
 app.post('/api/create-preference', async (req, res) => {
@@ -24,7 +24,7 @@ app.post('/api/create-preference', async (req, res) => {
           title: title,
           quantity: Number(quantity),
           unit_price: Number(price),
-          currency_id: 'UYU',
+          currency_id: 'USD',
         },
       ],
       back_urls: {
@@ -56,5 +56,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`✅ Backend corriendo en http://localhost:${port}`);
-  console.log(`💰 Moneda configurada: UYU`);
+  console.log(`💰 Moneda configurada: USD`);
 });
