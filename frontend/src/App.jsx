@@ -58,7 +58,7 @@ function App() {
       title: 'Pc Core i7 3Gen 12Gb Ram',
       description: 'Discos SSD 500GB, Tarjeta de video Geforce 4Gb',
       price: 680,
-      image: 'images/PCi73gen.png?w=400&h=300&fit=crop'
+      image: '/images/PCi73gen.png?w=400&h=300&fit=crop'
     },
     {
       id: 5,
