@@ -151,7 +151,7 @@ function App() {
                 <h3 className="product-title">{product.title}</h3>
                 <p className="product-description">{product.description}</p>
                 <div className="product-price">
-                  ${product.price.toLocaleString('en-US')} <span className="price-currency">USD</span>
+                  ${product.price.toLocaleString('es-UY')} <span className="price-currency">USD</span>
                 </div>
                 <button className="buy-button" onClick={() => handleBuy(product)}>
                   Comprar ahora

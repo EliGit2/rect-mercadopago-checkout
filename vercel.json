@@ -1,3 +1,17 @@
+/*{
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "vite"
+    },
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/__/backend"
+    }
+  }
+}*/
+
 {
   "experimentalServices": {
     "frontend": {
@@ -9,5 +23,32 @@
       "entrypoint": "backend",
       "routePrefix": "/__/backend"
     }
+  },
+  "builds": [
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/dist"
+      }
+    },
+    {
+      "src": "backend/api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/__/backend/(.*)",
+      "dest": "backend/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "MERCADOPAGO_ACCESS_TOKEN": "APP_USR-6915537395252772-072400-3414457857888b902e1bb2846d487a3af9-1104219206",
+    "FRONTEND_URL": "https://tu-app.vercel.app"
   }
 }
